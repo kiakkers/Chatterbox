@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://2nrqj0d0pfrk"]
+
+[ext_resource type="Texture2D" uid="uid://cisahy0cajclb" path="res://sprite/paused1.png" id="1_bs354"]
+[ext_resource type="Script" uid="uid://dnq6pxchr0ced" path="res://pausemenu.gd" id="1_ucuyg"]
+[ext_resource type="Texture2D" uid="uid://b5ntgp5kovnai" path="res://sprite/paused2.png" id="2_iknc3"]
+[ext_resource type="FontFile" uid="uid://bxnx0oaglnks1" path="res://Chatterfont-Regular.ttf" id="3_iknc3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ucuyg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bs354")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iknc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ucuyg"]
+font = ExtResource("3_iknc3")
+font_size = 29
+font_color = Color(0.8651874, 0.59828717, 0.5445426, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2.37, 1)
+
+[node name="Control" type="Control" unique_id=1298660991]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ucuyg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1406634558]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.09019608, 0.09019608, 0.09019608, 0.32941177)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=725921670]
+process_mode = 3
+texture_filter = 1
+position = Vector2(550, 95)
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_ucuyg")
+autoplay = "default"
+frame_progress = 0.8757151
+
+[node name="Button" type="Button" parent="." unique_id=855085586]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 524.0
+offset_right = 679.56
+offset_bottom = 612.95
+flat = true
+
+[node name="Label" type="Label" parent="Button" unique_id=29432062]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "resume"
+
+[node name="vol" type="HSlider" parent="." unique_id=1862561793]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 241.0
+offset_right = 700.0
+offset_bottom = 257.0
+step = 0.01
+
+[node name="Label" type="Label" parent="vol" unique_id=1646325966]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -38.0
+offset_right = 283.0
+offset_bottom = -8.0
+text = "Master volume"
+label_settings = SubResource("LabelSettings_ucuyg")
+
+[node name="sens" type="HSlider" parent="." unique_id=1504705272]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 347.0
+offset_right = 702.0
+offset_bottom = 363.0
+min_value = 1500.0
+max_value = 7000.0
+value = 4000.0
+
+[node name="Label" type="Label" parent="sens" unique_id=2090123350]
+layout_mode = 0
+offset_left = -51.0
+offset_top = -37.0
+offset_right = 354.0
+offset_bottom = -7.0
+text = "Microphone Sensitivity"
+label_settings = SubResource("LabelSettings_ucuyg")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="vol" to="." method="_on_vol_value_changed"]
+[connection signal="value_changed" from="sens" to="." method="_on_sens_value_changed"]
