@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://iuy1hntpd7n2"]
+
+[ext_resource type="Script" uid="uid://di78r8rin7cfx" path="res://Microphone.gd" id="1_ic533"]
+
+[node name="Node3D" type="Node3D" unique_id=304336831]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1023022532]
+autoplay = true
+bus = &"Mic"
+script = ExtResource("1_ic533")
